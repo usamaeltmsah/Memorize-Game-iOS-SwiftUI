@@ -47,7 +47,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         if n > selectedTheme?.emojis.count ?? 10 {
             n = selectedTheme?.emojis.count ?? 0
         }
-        cards = Array<Card>()
+        cards = []
         // Add numberOfPairsOfCards x 2 cards array
         for pairIndex in 0..<n {
             let content: CardContent = createCardContent(pairIndex)
@@ -59,12 +59,11 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     struct Card: Identifiable {
-        var isFaceUP: Bool = false
-        var isMatched: Bool = false
-        var isSeen: Bool = false
-        var content: CardContent
-        
-        var id: Int
+        var isFaceUP = false
+        var isMatched = false
+        var isSeen = false
+        let content: CardContent
+        let id: Int
         
         mutating func flipCard() {
             isFaceUP.toggle()

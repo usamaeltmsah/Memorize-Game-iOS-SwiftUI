@@ -10,6 +10,8 @@ import SwiftUI
 
 // ViewModel
 class EmojiMemoryGame: ObservableObject {
+    typealias Card = MemoryGame<String>.Card
+    
     static var selectedTheme: Theme<String>?
     
     static private let emojis = ["😤", "😅", "🤓", "😰", "🍏", "🍍", "🧇", "🍔", "🍟", "🥨", "🍲", "🍙", "🍰", "🥜", "🍿", "🍶", "🍺", "🏀", "🏹", "🥢"]
@@ -29,19 +31,15 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
         
-    @Published private var model: MemoryGame<String> = createMemoryGame(randomTheme() ?? theme1)
+    @Published private var model = createMemoryGame(randomTheme() ?? theme1)
     
-    var cards: Array<MemoryGame<String>.Card> { model.cards }
+    var cards: Array<Card> { model.cards }
     
     // MARK: - Intent(s)
     
-    func choose(_ card: MemoryGame<String>.Card) {
-        model.choose(card)
-    }
+    func choose(_ card: Card) { model.choose(card) }
     
-    func getScore() -> Int {
-        model.score
-    }
+    func getScore() -> Int { model.score }
     
     func newGame() {
         model = EmojiMemoryGame.createMemoryGame(EmojiMemoryGame.randomTheme() ?? EmojiMemoryGame.theme1)

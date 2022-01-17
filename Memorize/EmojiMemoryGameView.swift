@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
     // viewModel Object
-    @ObservedObject var viewModel: EmojiMemoryGame
+    @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
         VStack(alignment: .trailing) {
@@ -17,22 +17,22 @@ struct ContentView: View {
                 Text(EmojiMemoryGame.selectedTheme?.name ?? "")
                     .padding()
                 Spacer()
-                Text("Score: \(viewModel.getScore())").foregroundColor(.cyan).font(.largeTitle)
+                Text("Score: \(game.getScore())").foregroundColor(.cyan).font(.largeTitle)
                 Spacer()
                 Text("New Game")
                     .foregroundColor(.blue)
                     .padding()
                     .onTapGesture {
-                    viewModel.newGame()
+                    game.newGame()
                 }
             }
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(viewModel.cards) { card in
-                        CardView(card: card)
+                    ForEach(game.cards) { card in
+                        CardView(card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                game.choose(card)
                             }
                     }
                 }
@@ -46,16 +46,20 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.light)
     }
 }
 
 
 struct CardView: View {
-    let card: MemoryGame<String>.Card
+    private let card: EmojiMemoryGame.Card
+    
+    init(_ card: EmojiMemoryGame.Card) {
+        self.card = card
+    }
     
     var body: some View {
         ZStack {
