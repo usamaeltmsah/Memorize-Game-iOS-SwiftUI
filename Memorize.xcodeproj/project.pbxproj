@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1998E13127A5B90E00ADDB86 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998E13027A5B90E00ADDB86 /* AspectVGrid.swift */; };
 		19A9F7B027932860007C4113 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9F7AF27932860007C4113 /* Theme.swift */; };
 		19D8D4C7277F4116002F79BC /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8D4C6277F4116002F79BC /* MemorizeApp.swift */; };
 		19D8D4C9277F4116002F79BC /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8D4C8277F4116002F79BC /* EmojiMemoryGameView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1998E13027A5B90E00ADDB86 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		19A9F7AF27932860007C4113 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Memorize/Theme.swift; sourceTree = "<group>"; };
 		19D8D4C3277F4116002F79BC /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19D8D4C6277F4116002F79BC /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				19F46C272787979800B9B7F0 /* EmojiMemoryGame.swift */,
 				19D8D4C6277F4116002F79BC /* MemorizeApp.swift */,
 				19D8D4C8277F4116002F79BC /* EmojiMemoryGameView.swift */,
+				1998E13027A5B90E00ADDB86 /* AspectVGrid.swift */,
 				19D8D4CA277F411B002F79BC /* Assets.xcassets */,
 				19D8D4CF277F411B002F79BC /* Persistence.swift */,
 				19D8D4D1277F411B002F79BC /* Memorize.xcdatamodeld */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1998E13127A5B90E00ADDB86 /* AspectVGrid.swift in Sources */,
 				19D8D4D0277F411B002F79BC /* Persistence.swift in Sources */,
 				19D8D4D3277F411B002F79BC /* Memorize.xcdatamodeld in Sources */,
 				19F46C262787955B00B9B7F0 /* MemoryGame.swift in Sources */,
