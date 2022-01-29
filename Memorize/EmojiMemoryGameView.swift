@@ -26,13 +26,17 @@ struct EmojiMemoryGameView: View {
                     game.newGame()
                 }
             }
-            AspectVGrid(items: game.cards, aspectRatio: 2/3, content: { card in
-                CardView(card)
-                    .padding(4)
-                    .onTapGesture {
-                        game.choose(card)
-                    }
-            })
+            AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+                if card.isMatched && !card.isFaceUP {
+                    Rectangle().opacity(0)
+                } else {
+                    CardView(card)
+                        .padding(4)
+                        .onTapGesture {
+                            game.choose(card)
+                        }
+                }
+            }
         }
         .padding(.horizontal)
         .foregroundColor(EmojiMemoryGame.selectedTheme?.color ?? .red)
@@ -42,10 +46,8 @@ struct EmojiMemoryGameView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        EmojiMemoryGameView(game: game)
-            .preferredColorScheme(.dark)
-        EmojiMemoryGameView(game: game)
-            .preferredColorScheme(.light)
+        game.choose(game.cards.first!)
+        return EmojiMemoryGameView(game: game)
     }
 }
 
@@ -64,6 +66,7 @@ struct CardView: View {
                 if card.isFaceUP {
                     shape.fill().foregroundColor(.white)
                     shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                    Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 110-90)).padding(5).opacity(0.5)
                     Text(card.content)
                         .font(font(in: geometry.size))
                 } else if card.isMatched {
@@ -83,6 +86,6 @@ struct CardView: View {
     private struct DrawingConstants {
         static let cornerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.75
+        static let fontScale: CGFloat = 0.7
     }
 }
